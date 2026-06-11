@@ -3,6 +3,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import ProtectedRoute from './components/ProtectedRoute';
 import Home from './pages/Home';
+import Questions from './pages/Questions';
 import Ask from './pages/Ask';
 import Admin from './pages/Admin';
 import AdminLogin from './pages/AdminLogin';
@@ -31,6 +32,7 @@ export default function App() {
               <Header />
               <Routes>
                 <Route path="/" element={<Home />} />
+                <Route path="/questions" element={<Questions />} />
                 <Route path="/ask" element={<Ask />} />
               </Routes>
               <Footer />

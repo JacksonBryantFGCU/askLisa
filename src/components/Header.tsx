@@ -15,10 +15,9 @@ export default function Header() {
     return () => subscription.unsubscribe();
   }, []);
 
-  // Close mobile menu on route change
   useEffect(() => { setMenuOpen(false); }, [location.pathname]);
 
-  const navLinkClass = ({ isActive }: { isActive: boolean }) =>
+  const linkClass = ({ isActive }: { isActive: boolean }) =>
     `${styles.navLink} ${isActive ? styles.navLinkActive : ''}`;
 
   const mobileLinkClass = ({ isActive }: { isActive: boolean }) =>
@@ -32,28 +31,19 @@ export default function Header() {
           <span className={styles.logoText}>AskLisa</span>
         </Link>
 
-        {/* Desktop nav */}
         <nav className={styles.nav} aria-label="Main navigation">
-          <NavLink to="/" end className={navLinkClass}>Home</NavLink>
-          <NavLink to="/#questions" className={navLinkClass}>Questions</NavLink>
+          <NavLink to="/" end className={linkClass}>Home</NavLink>
+          <NavLink to="/questions" className={linkClass}>Questions</NavLink>
           <div className={styles.divider} />
-          {session ? (
-            <NavLink to="/admin" className={({ isActive }) =>
-              `${styles.navLink} ${styles.adminLink} ${isActive ? styles.adminLinkActive : ''}`
-            }>
-              Dashboard
-            </NavLink>
-          ) : (
-            <NavLink to="/admin/login" className={({ isActive }) =>
-              `${styles.navLink} ${styles.adminLink} ${isActive ? styles.adminLinkActive : ''}`
-            }>
-              Admin
-            </NavLink>
-          )}
+          <NavLink
+            to={session ? '/admin' : '/admin/login'}
+            className={({ isActive }) => `${styles.navLink} ${styles.adminLink} ${isActive ? styles.navLinkActive : ''}`}
+          >
+            {session ? 'Dashboard' : 'Admin'}
+          </NavLink>
           <Link to="/ask" className={styles.askButton}>Ask a Question</Link>
         </nav>
 
-        {/* Mobile hamburger */}
         <button
           className={styles.menuBtn}
           onClick={() => setMenuOpen((o) => !o)}
@@ -66,13 +56,12 @@ export default function Header() {
         </button>
       </div>
 
-      {/* Mobile drawer */}
       <nav
         className={`${styles.mobileMenu} ${menuOpen ? styles.mobileMenuOpen : ''}`}
         aria-label="Mobile navigation"
       >
         <NavLink to="/" end className={mobileLinkClass}>Home</NavLink>
-        <NavLink to="/#questions" className={mobileLinkClass}>Questions</NavLink>
+        <NavLink to="/questions" className={mobileLinkClass}>Questions</NavLink>
         <Link to="/ask" className={styles.mobileAskButton}>Ask a Question</Link>
         <Link
           to={session ? '/admin' : '/admin/login'}
