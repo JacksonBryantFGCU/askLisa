@@ -30,8 +30,8 @@ export default function Home() {
           <p className={styles.heroEyebrow}>Neighborhood Q&amp;A</p>
           <h1 className={styles.heroTitle}>Got a question about<br />the neighborhood?</h1>
           <p className={styles.heroSubtitle}>
-            Lisa knows the community inside and out. Ask anything —
-            local services, events, recommendations, or just how things work around here.
+            Lisa knows the Sunstone community inside and out. Ask anything about
+            local services, events, recommendations, or how things work around here.
           </p>
           <Link to="/ask" className={styles.heroCta}>
             Ask Lisa a Question →
@@ -44,9 +44,9 @@ export default function Home() {
           <div className={styles.lisaAvatar} aria-hidden>L</div>
           <div className={styles.aboutText}>
             <p>
-              <strong>Hi, I'm Lisa!</strong> I've lived in this neighborhood for over 15 years
+              <strong>Hi, I'm Lisa!</strong> I've lived in this neighborhood for over 3 years
               and love helping neighbors find what they need. Whether it's a plumber recommendation,
-              park hours, or who to call about a streetlight — I'm here to help.
+              park hours, or who to call about a streetlight, I'm here to help.
             </p>
           </div>
         </div>

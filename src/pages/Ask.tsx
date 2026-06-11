@@ -36,8 +36,8 @@ export default function Ask() {
             <div className={styles.successIcon}>✉️</div>
             <p className={styles.successTitle}>Question sent!</p>
             <p className={styles.successBody}>
-              Thanks for reaching out. Lisa will read your question and — if it's helpful
-              for the neighborhood — post an answer here on the site.
+              Thanks for reaching out. Lisa will read your question and post an answer
+              here on the site if it's helpful for the neighborhood.
             </p>
             <Link to="/" className={styles.backLink}>← Back to all questions</Link>
           </div>
@@ -52,7 +52,7 @@ export default function Ask() {
         <Link to="/" className={styles.back}>← Back</Link>
         <h1 className={styles.heading}>Ask Lisa</h1>
         <p className={styles.subheading}>
-          Have a question about the neighborhood? Ask away — Lisa reads every message
+          Have a question about Sunstone? Ask away. Lisa reads every message
           and posts helpful answers here for everyone to see.
         </p>
 
@@ -86,7 +86,7 @@ export default function Ask() {
               id="neighborhood"
               type="text"
               className={styles.input}
-              placeholder="e.g. Maple Ave, the north side..."
+              placeholder="e.g. Sunstone, Sunstone Lakeside..."
               value={neighborhood}
               onChange={(e) => setNeighborhood(e.target.value)}
             />

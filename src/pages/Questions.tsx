@@ -26,7 +26,7 @@ export default function Questions() {
     <main className={styles.page}>
       <div className={styles.inner}>
         <h1 className={styles.heading}>Answered Questions</h1>
-        <p className={styles.sub}>Browse everything Lisa has answered for the neighborhood.</p>
+        <p className={styles.sub}>Browse everything Lisa has answered for the Sunstone community.</p>
 
         {loading ? (
           <div className={styles.loading} role="status" aria-label="Loading" />
