@@ -52,7 +52,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className={styles.qaSection}>
+      <section id="questions" className={styles.qaSection}>
         <div className={styles.sectionHeader}>
           <h2 className={styles.sectionTitle}>Answered Questions</h2>
           {!loading && questions.length > 0 && (
