@@ -13,7 +13,7 @@ export default function Home() {
   useEffect(() => {
     supabase
       .from('questions')
-      .select('*')
+      .select('*, follow_ups(*)')
       .not('answer', 'is', null)
       .order('answered_at', { ascending: false })
       .returns<Question[]>()

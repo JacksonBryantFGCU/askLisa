@@ -98,3 +98,220 @@
   color: var(--color-text-muted);
   margin-left: auto;
 }
+
+/* Follow-ups */
+.followUpsSection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  border-top: 1px solid var(--color-border);
+  padding-top: var(--space-4);
+}
+
+.followUpThread {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding-left: var(--space-4);
+  border-left: 2px solid var(--color-border);
+}
+
+.followUpQ {
+  display: flex;
+  gap: var(--space-2);
+  align-items: flex-start;
+}
+
+.followUpIcon {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  background: var(--color-bg-subtle);
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  margin-top: 2px;
+}
+
+.followUpText {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text);
+  line-height: 1.45;
+}
+
+.followUpA {
+  display: flex;
+  gap: var(--space-2);
+  align-items: flex-start;
+}
+
+.followUpAvatar {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  background: var(--color-brand);
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  color: #fff;
+  margin-top: 2px;
+}
+
+.followUpAnswer {
+  font-family: var(--font-serif);
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  font-style: italic;
+}
+
+/* Toggle button */
+.followUpToggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-brand);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.15s ease;
+  align-self: flex-start;
+}
+
+.followUpToggle:hover {
+  color: var(--color-brand-dark);
+}
+
+.toggleArrow {
+  font-style: normal;
+  transition: transform 0.15s ease;
+  display: inline-block;
+}
+
+.toggleArrowOpen {
+  transform: rotate(180deg);
+}
+
+/* Follow-up form */
+.followUpForm {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  background: var(--color-bg-subtle);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+}
+
+.followUpFormTitle {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+}
+
+.followUpInput {
+  width: 100%;
+  padding: var(--space-2) var(--space-3);
+  border: 1.5px solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-card);
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  color: var(--color-text);
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.followUpInput::placeholder {
+  color: var(--color-text-muted);
+}
+
+.followUpInput:focus {
+  border-color: var(--color-brand);
+  box-shadow: 0 0 0 3px rgba(194, 90, 56, 0.10);
+}
+
+.followUpTextarea {
+  width: 100%;
+  padding: var(--space-2) var(--space-3);
+  border: 1.5px solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-card);
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  color: var(--color-text);
+  line-height: 1.5;
+  resize: vertical;
+  min-height: 80px;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.followUpTextarea::placeholder {
+  color: var(--color-text-muted);
+}
+
+.followUpTextarea:focus {
+  border-color: var(--color-brand);
+  box-shadow: 0 0 0 3px rgba(194, 90, 56, 0.10);
+}
+
+.followUpFormRow {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-2);
+  align-items: center;
+}
+
+.followUpCancel {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: var(--space-2) var(--space-3);
+}
+
+.followUpCancel:hover {
+  color: var(--color-text);
+}
+
+.followUpSubmit {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #fff;
+  background: var(--color-brand);
+  border: none;
+  border-radius: var(--radius-full);
+  padding: var(--space-2) var(--space-4);
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.followUpSubmit:hover:not(:disabled) {
+  background: var(--color-brand-dark);
+}
+
+.followUpSubmit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.followUpSuccess {
+  font-size: 0.8125rem;
+  color: var(--color-success);
+  font-weight: 500;
+  text-align: center;
+  padding: var(--space-2) 0;
+}

@@ -138,6 +138,13 @@
   margin-left: auto;
 }
 
+.fuContext {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  font-style: italic;
+  margin-bottom: var(--space-1);
+}
+
 .qText {
   font-family: var(--font-display);
   font-size: 1rem;

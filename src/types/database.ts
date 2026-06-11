@@ -1,3 +1,13 @@
+export type FollowUp = {
+  id: string;
+  question_id: string;
+  name: string | null;
+  follow_up: string;
+  answer: string | null;
+  answered_at: string | null;
+  created_at: string;
+};
+
 export type Question = {
   id: string;
   name: string | null;
@@ -7,13 +17,14 @@ export type Question = {
   category: string | null;
   answered_at: string | null;
   created_at: string;
+  follow_ups?: FollowUp[];
 };
 
 export type Database = {
   public: {
     Tables: {
       questions: {
-        Row: Question;
+        Row: Omit<Question, 'follow_ups'>;
         Insert: {
           id?: string;
           name?: string | null;
