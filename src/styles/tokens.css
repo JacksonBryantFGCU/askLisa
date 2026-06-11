@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap');
+
+:root {
+  /* Brand */
+  --color-brand: #C25A38;
+  --color-brand-dark: #A8492C;
+  --color-brand-light: #F7E3D6;
+
+  /* Backgrounds */
+  --color-bg: #FBF6EE;
+  --color-bg-card: #FFFFFF;
+  --color-bg-subtle: #F5F2EC;
+  --color-bg-hover: #F3EAD3;
+
+  /* Borders */
+  --color-border: #ECE6DB;
+  --color-border-strong: #E5DECF;
+
+  /* Text */
+  --color-text: #2A2420;
+  --color-text-secondary: #574D44;
+  --color-text-muted: #847B6C;
+
+  /* Accent */
+  --color-accent: #0891B2;
+
+  /* Status */
+  --color-success: #4F7C5E;
+  --color-success-bg: #E4EFE6;
+  --color-error: #C25A38;
+  --color-error-bg: #F7E3D6;
+
+  /* Typography */
+  --font-display: 'Bricolage Grotesque', system-ui, sans-serif;
+  --font-body: 'Figtree', system-ui, sans-serif;
+  --font-serif: 'Newsreader', Georgia, serif;
+
+  /* Spacing scale */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+
+  /* Radius */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(42, 36, 32, 0.08);
+  --shadow-md: 0 4px 12px rgba(42, 36, 32, 0.10);
+  --shadow-lg: 0 8px 24px rgba(42, 36, 32, 0.12);
+
+  /* Max content width */
+  --max-width: 800px;
+  --max-width-wide: 1100px;
+}
