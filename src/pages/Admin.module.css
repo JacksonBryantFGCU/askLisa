@@ -274,6 +274,10 @@
   background: var(--color-bg-card);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.answeredBody {
   padding: var(--space-5) var(--space-6);
   display: flex;
   flex-direction: column;
@@ -298,6 +302,7 @@
   display: flex;
   align-items: center;
   gap: var(--space-3);
+  flex-wrap: wrap;
 }
 
 .answeredCategory {
@@ -313,6 +318,43 @@
   font-size: 0.75rem;
   color: var(--color-text-muted);
   margin-left: auto;
+}
+
+.answeredActions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-6);
+  border-top: 1px solid var(--color-border);
+  background: var(--color-bg-subtle);
+}
+
+.editBtn {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  background: none;
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  padding: var(--space-1) var(--space-3);
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.editBtn:hover {
+  background: var(--color-bg-hover);
+  color: var(--color-text);
+}
+
+/* Edit form inside answered card */
+.editForm {
+  border-top: 1px solid var(--color-border);
+  padding: var(--space-5) var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  background: var(--color-bg-subtle);
 }
 
 /* Empty + loading states */

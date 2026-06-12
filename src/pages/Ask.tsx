@@ -40,7 +40,6 @@ export default function Ask() {
       <main className={styles.page}>
         <div className={styles.inner}>
           <div className={styles.success} role="status">
-            <div className={styles.successIcon}>✉️</div>
             <p className={styles.successTitle}>Question sent!</p>
             <p className={styles.successBody}>
               Thanks for reaching out. Lisa will read your question and post an answer

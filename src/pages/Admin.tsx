@@ -22,6 +22,7 @@ export default function Admin() {
   const [loading, setLoading] = useState(true);
   const [drafts, setDrafts] = useState<Record<string, DraftState>>({});
   const [saving, setSaving] = useState<Record<string, boolean>>({});
+  const [editingId, setEditingId] = useState<string | null>(null);
 
   const load = useCallback(async () => {
     const [pendingRes, followUpRes, answeredRes] = await Promise.all([
@@ -89,6 +90,33 @@ export default function Admin() {
   async function handleDelete(id: string) {
     if (!confirm('Delete this question? This cannot be undone.')) return;
     await supabase.from('questions').delete().eq('id', id);
+    await load();
+  }
+
+  function startEdit(q: Question) {
+    setDrafts((prev) => ({
+      ...prev,
+      [q.id]: { answer: q.answer ?? '', category: q.category ?? '' },
+    }));
+    setEditingId(q.id);
+  }
+
+  function cancelEdit(id: string) {
+    setDrafts((prev) => { const next = { ...prev }; delete next[id]; return next; });
+    setEditingId(null);
+  }
+
+  async function handleSaveEdit(q: Question) {
+    const draft = drafts[q.id];
+    if (!draft?.answer?.trim()) return;
+    setSaving((prev) => ({ ...prev, [q.id]: true }));
+    await supabase.from('questions').update({
+      answer: draft.answer.trim(),
+      category: draft.category || null,
+    } as never).eq('id', q.id);
+    setSaving((prev) => ({ ...prev, [q.id]: false }));
+    setEditingId(null);
+    setDrafts((prev) => { const next = { ...prev }; delete next[q.id]; return next; });
     await load();
   }
 
@@ -226,18 +254,68 @@ export default function Admin() {
             {answered.length > 0 && (
               <section className={styles.section}>
                 <p className={styles.sectionHeading}>Answered ({answered.length})</p>
-                {answered.map((q) => (
-                  <div key={q.id} className={styles.answeredCard}>
-                    <p className={styles.answeredQ}>{q.question}</p>
-                    <p className={styles.answeredA}>{q.answer}</p>
-                    <div className={styles.answeredMeta}>
-                      {q.category && <span className={styles.answeredCategory}>{q.category}</span>}
-                      <time className={styles.answeredDate} dateTime={q.answered_at ?? ''}>
-                        {q.answered_at ? formatDate(q.answered_at) : ''}
-                      </time>
+                {answered.map((q) => {
+                  const isEditing = editingId === q.id;
+                  const draft = drafts[q.id] ?? { answer: q.answer ?? '', category: q.category ?? '' };
+                  const isSaving = saving[q.id] ?? false;
+                  return (
+                    <div key={q.id} className={styles.answeredCard}>
+                      <div className={styles.answeredBody}>
+                        <p className={styles.answeredQ}>{q.question}</p>
+                        {!isEditing && <p className={styles.answeredA}>{q.answer}</p>}
+                        <div className={styles.answeredMeta}>
+                          {q.category && <span className={styles.answeredCategory}>{q.category}</span>}
+                          <time className={styles.answeredDate} dateTime={q.answered_at ?? ''}>
+                            {q.answered_at ? formatDate(q.answered_at) : ''}
+                          </time>
+                        </div>
+                      </div>
+
+                      {isEditing ? (
+                        <div className={styles.editForm}>
+                          <textarea
+                            className={styles.textarea}
+                            value={draft.answer}
+                            onChange={(e) => setDraft(q.id, 'answer', e.target.value)}
+                            rows={4}
+                            autoFocus
+                          />
+                          <div className={styles.formRow}>
+                            <select
+                              className={styles.categorySelect}
+                              value={draft.category}
+                              onChange={(e) => setDraft(q.id, 'category', e.target.value)}
+                              aria-label="Category"
+                            >
+                              <option value="">No category</option>
+                              {CATEGORIES.map((c) => <option key={c} value={c}>{c}</option>)}
+                            </select>
+                            <button className={styles.deleteBtn} onClick={() => cancelEdit(q.id)} type="button">
+                              Cancel
+                            </button>
+                            <button
+                              className={styles.publishBtn}
+                              onClick={() => void handleSaveEdit(q)}
+                              disabled={!draft.answer?.trim() || isSaving}
+                              type="button"
+                            >
+                              {isSaving ? 'Saving…' : 'Save Changes'}
+                            </button>
+                          </div>
+                        </div>
+                      ) : (
+                        <div className={styles.answeredActions}>
+                          <button className={styles.editBtn} onClick={() => startEdit(q)} type="button">
+                            Edit
+                          </button>
+                          <button className={styles.deleteBtn} onClick={() => void handleDelete(q.id)} type="button">
+                            Delete
+                          </button>
+                        </div>
+                      )}
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
               </section>
             )}
           </>
