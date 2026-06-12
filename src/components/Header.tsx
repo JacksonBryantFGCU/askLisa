@@ -39,7 +39,7 @@ export default function Header() {
             to={session ? '/admin' : '/admin/login'}
             className={({ isActive }) => `${styles.navLink} ${styles.adminLink} ${isActive ? styles.navLinkActive : ''}`}
           >
-            {session ? 'Dashboard' : 'Admin'}
+Admin
           </NavLink>
           <Link to="/ask" className={styles.askButton}>Ask a Question</Link>
         </nav>
@@ -67,7 +67,7 @@ export default function Header() {
           to={session ? '/admin' : '/admin/login'}
           className={`${styles.mobileLink} ${styles.mobileAdminLink}`}
         >
-          {session ? 'Dashboard' : 'Admin'}
+Admin
         </Link>
       </nav>
     </header>
