@@ -1,6 +1,7 @@
 import { useState, type FormEvent } from 'react';
 import type { Question, FollowUp } from '../types/database';
 import { supabase } from '../lib/supabase';
+import { notifyLisa } from '../lib/notify';
 import styles from './QuestionCard.module.css';
 
 type Props = { question: Question };
@@ -50,6 +51,10 @@ export default function QuestionCard({ question: q }: Props) {
     if (error) {
       setSubmitState('error');
     } else {
+      notifyLisa(
+        'New follow-up on AskLisa',
+        `${name.trim() || 'Anonymous'} asked a follow-up: ${followUp.trim()}`,
+      );
       setSubmitState('success');
       setName('');
       setFollowUp('');

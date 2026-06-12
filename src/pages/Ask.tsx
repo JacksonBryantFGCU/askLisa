@@ -1,6 +1,7 @@
 import { useState, type FormEvent } from 'react';
 import { Link } from 'react-router-dom';
 import { supabase } from '../lib/supabase';
+import { notifyLisa } from '../lib/notify';
 import styles from './Ask.module.css';
 
 type FormState = 'idle' | 'sending' | 'success' | 'error';
@@ -25,6 +26,12 @@ export default function Ask() {
       category: null,
     }] as never[]);
 
+    if (!error) {
+      notifyLisa(
+        'New question on AskLisa',
+        `${name.trim() || 'Anonymous'} asked: ${question.trim()}`,
+      );
+    }
     setFormState(error ? 'error' : 'success');
   }
 

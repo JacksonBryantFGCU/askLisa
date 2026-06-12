@@ -37,6 +37,16 @@ export default function Admin() {
 
   useEffect(() => { void load(); }, [load]);
 
+  // Live updates via Supabase Realtime
+  useEffect(() => {
+    const channel = supabase
+      .channel('admin-live')
+      .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'questions' }, () => { void load(); })
+      .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'follow_ups' }, () => { void load(); })
+      .subscribe();
+    return () => { void supabase.removeChannel(channel); };
+  }, [load]);
+
   async function handleLogout() {
     await supabase.auth.signOut();
     navigate('/admin/login');
@@ -96,6 +106,7 @@ export default function Admin() {
         <div className={styles.topbarLeft}>
           <span className={styles.topbarTitle}>Lisa's Dashboard</span>
           {totalPending > 0 && <span className={styles.badge}>{totalPending}</span>}
+          <span className={styles.liveDot} title="Live updates on" aria-label="Live" />
         </div>
         <div className={styles.topbarRight}>
           <Link to="/" className={styles.viewSiteLink}>View site →</Link>
