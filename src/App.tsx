@@ -7,6 +7,7 @@ import Questions from './pages/Questions';
 import Ask from './pages/Ask';
 import Admin from './pages/Admin';
 import AdminLogin from './pages/AdminLogin';
+import ResetPassword from './pages/ResetPassword';
 import './styles/global.css';
 
 export default function App() {
@@ -15,6 +16,7 @@ export default function App() {
       <Routes>
         {/* Admin routes — no site header/footer */}
         <Route path="/admin/login" element={<AdminLogin />} />
+        <Route path="/admin/reset-password" element={<ResetPassword />} />
         <Route
           path="/admin"
           element={
